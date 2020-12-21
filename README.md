@@ -9,7 +9,7 @@ git clone https://github.com/dalunacrobate/DaProfiler
 cd daprofiler
 pip install -r requirements.txt
 ```
-## 💻 Utilisation
+## 💻 Utilisation - Linux
 ```bash
 profiler.py -n [NAME] -ln [LAST NAME]
 ```
