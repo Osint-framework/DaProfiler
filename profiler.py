@@ -26,7 +26,7 @@ pren = (args.name)
 
 print("""
  =====================================
-| Author : Daluna#1313 ( On Discord ) |
+| Author : Daluna                     |
 |  Mail : daluna_pro@protonmail.ch    |
  =====================================
 """)
