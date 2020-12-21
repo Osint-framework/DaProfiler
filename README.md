@@ -1,7 +1,7 @@
 # DaProfiler
 DaProfiler vous permet d'automatiser vos recherches sur des particuliers basés en **__France__** uniquement. Cet outil ne nécessite aucune clé d'API pour le moment mais un module qui se basera sur l'API de [LeakCheck.net](https://leakcheck.net/) ne tardera pas à arriver.
 
-## 🛠 Installation
+## 🛠 Installation - Linux
 
 
 ```bash
@@ -9,7 +9,7 @@ git clone https://github.com/dalunacrobate/DaProfiler
 cd daprofiler
 pip install -r requirements.txt
 ```
-## 💻 Utilisation - Linux
+## 💻 Utilisation
 ```bash
 profiler.py -n [NAME] -ln [LAST NAME]
 ```
