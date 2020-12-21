@@ -4,7 +4,7 @@ DaProfiler vous permet d'automatiser vos recherches sur des particuliers basés 
 ## 🛠 Installation
 
 
-```python
+```bash
 git clone https://github.com/dalunacrobate/DaProfiler
 cd daprofiler
 pip install -r requirements.txt
