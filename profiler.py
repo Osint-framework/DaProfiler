@@ -1,7 +1,8 @@
 import threading, time, colorama, treelib, random
 import argparse
 
-from colorama import Fore
+from colorama import Fore, init
+init(convert=True)
 from bs4      import BeautifulSoup
 from treelib  import Node, Tree
 
@@ -26,7 +27,7 @@ pren = (args.name)
 
 print("""
  =====================================
-| Author : Daluna#1313 ( On Discord ) |
+|     Author : Dalunacrobate          |
 |  Mail : daluna_pro@protonmail.ch    |
  =====================================
 """)
