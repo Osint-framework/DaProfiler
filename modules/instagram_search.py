@@ -12,16 +12,19 @@ def ig_search(name,pren):
 }
     r = requests.get(url='https://www.stalkhub.com/search?user={} {}'.format(pren,name),headers=headers)
     page = r.content
-    features = "html.parser"
-    soup = BeautifulSoup(page, features)
-    profiles = soup.find_all('span',{'class':'user-name'})
-    new_profiles = []
-    page_accounts = soup.find('div',{'class':'container'})
-    for i in profiles:
-        if "@" in i.text:
-            pass
-        else:
-            new_profiles.append("@"+i.text)
-    return new_profiles
+    if "animals.co" in page.decode():
+        return None
+    else:
+        features = "html.parser"
+        soup = BeautifulSoup(page, features)
+        profiles = soup.find_all('span',{'class':'user-name'})
+        new_profiles = []
+        page_accounts = soup.find('div',{'class':'container'})
+        for i in profiles:
+            if "@" in i.text:
+                pass
+            else:
+                new_profiles.append("@"+i.text)
+        return new_profiles
 
 # By Daluna#1313 from Prism Intelligence Group
