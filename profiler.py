@@ -13,7 +13,7 @@ from modules  import dirigeants_bfmtv
 from modules  import death_records
 from modules  import twitter_search
 from modules  import facebook_search
-from modules  import gmail_generator
+from modules  import mail_gen
 
 
 parser = argparse.ArgumentParser()
@@ -26,7 +26,7 @@ pren = (args.name)
 
 print("""
  =====================================
-| Author : Daluna                     |
+| Author : Daluna#1313 ( On Discord ) |
 |  Mail : daluna_pro@protonmail.ch    |
  =====================================
 """)
@@ -39,8 +39,8 @@ instagram_results = instagram_search.ig_search(name=name,pren=pren)
 copainsdavant_results = copainsdavant_search.copains_davant(name=name,pren=pren)
 skype_results = skype_search.skype_searchh(name=name,pren=pren)
 pagesblanche = pagesblanches_search.adresse_search(name=name,pren=pren)
-possible_mail = gmail_generator.check(name=name,pren=pren)
-skype2mail = gmail_generator.skype2email(name=name,pren=pren)
+possible_mail = mail_gen.check(name=name,pren=pren)
+skype2mail = mail_gen.skype2email(name=name,pren=pren)
 
 tree = Tree()
 tree.create_node(f"{pren} {name}", 1)
