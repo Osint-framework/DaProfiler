@@ -1,6 +1,6 @@
 # DaProfiler
 DaProfiler vous permet d'automatiser vos recherches sur des particuliers basés en **__France__** uniquement. Cet outil ne nécessite aucune clé d'API pour le moment mais un module qui se basera sur l'API de [LeakCheck.net](https://leakcheck.net/) ne tardera pas à arriver.
-La particularité de ce programme est sa capacité à retrouver les adresses mails d'une cible via des recherches sur [Skype](https://www.skype.com/fr/) et des essais de combinaison d'adresses mails suivies d'une vérification pour savoir si l'adresse mail existe ou non.
+La particularité de ce programme est sa capacité à retrouver les adresses mails d'une cible via des recherches sur [Skype](https://www.skype.com/fr/) et des essais de combinaison d'adresses mails suivies d'une vérification pour savoir si l'adresse mail existe ou non (Attention aux faux négatifs, les résultats affichés ne concernent pas forcément la cible que vous recherchez si une autre personne pourte le meme nom - prénom) .
 
 ## 🛠 Installation - Linux
 
