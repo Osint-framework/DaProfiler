@@ -1,31 +1,15 @@
-import socket, smtplib, re
-import dns.resolver
-
+#trouvé sur "https://docs.isitarealemail.com/how-to-validate-email-addresses-in-python"
+# modifié (un peu) par eupone
+import requests
 
 def verify(mail):
-    addressToVerify = mail
-    match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', addressToVerify)
+    response = requests.get("https://isitarealemail.com/api/email/validate?email={}".format(mail),params = {'Authorization':'fa86a707-750e-485c-8ec3-86eddd7ec4d0'},headers = {'Authorization': "Bearer fa86a707-750e-485c-8ec3-86eddd7ec4d0"})
 
-    if match == None:
-        return False
-
-    records = dns.resolver.query('scottbrady91.com', 'MX')
-    mxRecord = records[0].exchange
-    mxRecord = str(mxRecord)
-
-    host = socket.gethostname()
-
-    server = smtplib.SMTP()
-    server.set_debuglevel(0)
-
-    server.connect(mxRecord)
-    server.helo(host)
-    server.mail('me@domain.com')
-    code, message = server.rcpt(str(addressToVerify))
-    server.quit()
-
-    if code == 250:
+    data = response.json()
+    status = data['status']
+    if status == "valid":
         return True
+    elif status == "invalid":
+        return None
     else:
         return None
-
