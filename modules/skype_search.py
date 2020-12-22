@@ -1,7 +1,7 @@
 import requests, bs4
 from bs4 import BeautifulSoup
 
-from modules import gmail_check
+from modules import mail_check
 
 def skype_searchh(name,pren):
     url = f"https://www.skypli.com/search/{name} {pren}"
