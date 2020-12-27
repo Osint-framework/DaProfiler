@@ -87,8 +87,11 @@ if len(possible_mail) != 0 or len(skype2mail) != 0:
     tree.create_node(Fore.RED+'Emails extracted'+Fore.RESET,146,parent=1)
     if skype2mail is not None:
         tree.create_node('['+Fore.GREEN+"++"+Fore.RESET+'] High probability',142,parent=146)
+        no_doubles = []
         for i in skype2mail:
-            tree.create_node(i,parent=142)
+            if i not in no_doubles:
+                no_doubles.append(i)
+                tree.create_node(i,parent=142)
     nb= str((len(possible_mail)))
     if int(nb) != 0:
         tree.create_node("("+Fore.YELLOW+nb+Fore.RESET+") "+Fore.YELLOW+"Possible Mailbox"+Fore.RESET,8,parent=146)
