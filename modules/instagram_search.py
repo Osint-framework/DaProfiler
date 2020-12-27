@@ -10,21 +10,17 @@ def ig_search(name,pren):
 'Accept-Language': 'en-US,en;q=0.9',
 'Pragma': 'no-cache'
 }
-    r = requests.get(url='https://www.stalkhub.com/search?user={} {}'.format(pren,name),headers=headers)
+    r = requests.get(url='https://www.mystalk.net/search/{} {}'.format(pren,name),headers=headers)
     page = r.content
-    if "animals.co" in page.decode():
-        return None
-    else:
-        features = "html.parser"
-        soup = BeautifulSoup(page, features)
-        profiles = soup.find_all('span',{'class':'user-name'})
-        new_profiles = []
-        page_accounts = soup.find('div',{'class':'container'})
-        for i in profiles:
-            if "@" in i.text:
-                pass
-            else:
-                new_profiles.append("@"+i.text)
-        return new_profiles
+    features = "html.parser"
+    soup = BeautifulSoup(page, features)
+    profiles = soup.find_all('div',{'class':'info'})
+    new_profiles = []
+    for i in profiles:
+        i = i.text
+        if pren.lower() in i.lower() and name.lower() in i.lower():
+            profile = (i.replace('\n','').replace('@',' | @'))
+            new_profiles.append(profile)
+    return new_profiles
 
 # By Daluna#1313 from Prism Intelligence Group
