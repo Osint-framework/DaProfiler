@@ -73,12 +73,12 @@ if twitter_results is not None:
     tree.create_node(Fore.CYAN+"Twitter"+Fore.RESET,5,parent=1)
     for i in twitter_results:
         tree.create_node(i,parent=5)
-if skype_results is not None:
+if len(skype_results) == 0:
     tree.create_node(Fore.CYAN+"Skype"+Fore.RESET,6,parent=1)
     tree.create_node("Accounts : {}".format(str(len(skype_results))),12,parent=6)
     for i in skype_results:
         tree.create_node(i,parent=12)
-if instagram_results is not None:
+if len(instagram_results) == 0:
     tree.create_node(Fore.MAGENTA+"Instagram"+Fore.RESET,7,parent=1)
     tree.create_node('Accounts : {}'.format(str(len(instagram_results))),13,parent=7)
     for i in instagram_results:
