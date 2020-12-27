@@ -5,7 +5,6 @@ from modules import mail_check
 def check(name,pren):
     results = [
         "{}.{}@gmail.com".format(name,pren),
-        "{}{}@gmail.com".format(name,pren),
         "{}.{}@yahoo.com".format(name,pren),
         "{}{}@yahoo.com".format(name,pren),
         "{}.{}@aol.com".format(name,pren),
