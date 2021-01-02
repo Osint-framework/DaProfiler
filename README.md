@@ -33,4 +33,4 @@ Pour rejoindre le discord cliquez [ici](https://discord.gg/yy8B6NYmf5).
 Toutes suggestions sont les bienvenues.
 
 ### 🌒 Autre
-Mon fond d'écran [ici](https://new-game-plus.fr/wp-content/uploads/2020/11/cyberpunk-2077-art.jpg) .
+Mon fond d'écran [ici](https://new-game-plus.fr/wp-content/uploads/2020/11/cyberpunk-2077-art.jpg).
