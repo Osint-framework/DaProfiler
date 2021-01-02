@@ -10,7 +10,7 @@ La particularité de ce programme est sa capacité à retrouver les adresses mai
 
 
 ```bash
-git clone https://github.com/dalunacrobate/DaProfiler
+git clone https://github.com/dalunacrobate/DaProfiler.git
 cd daprofiler
 pip install -r requirements.txt
 ```
