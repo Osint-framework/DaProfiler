@@ -21,7 +21,7 @@ profiler.py -n [NAME] -ln [LAST NAME]
 ##  📝 Contact
 Mail : _daluna_pro@protonmail.ch_.
 
-Mon discord personnel : _Dalunacrobate#1313_.
+Mon discord personnel : _Lui#6166_.
 
 Pour rejoindre le discord cliquez [ici](https://discord.gg/yy8B6NYmf5).
 
