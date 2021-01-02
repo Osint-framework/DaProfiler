@@ -20,7 +20,7 @@ profiler.py -n [NAME] -ln [LAST NAME]
 ```
 
 ## 📷 Demo
-![demoent](https://i.postimg.cc/gjJ8FWNy/ezgif-3-89a6548a75c9.gif)
+![alt text](https://i.ibb.co/BPyQ1jV/t-l-chargement-4.png)
 
 ##  📝 Contact
 Mail : _daluna_pro@protonmail.ch_.
