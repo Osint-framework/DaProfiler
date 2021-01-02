@@ -38,5 +38,5 @@ Toutes suggestions sont les bienvenues.
 ### 🌒 Autre
 Mon fond d'écran [ici](https://new-game-plus.fr/wp-content/uploads/2020/11/cyberpunk-2077-art.jpg).
 
-[![saythanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/dalunacrobate)
+[![saythanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)]
 
