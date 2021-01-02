@@ -16,7 +16,7 @@ profiler.py -n [NAME] -ln [LAST NAME]
 ```
 
 ## 📷 Screenshot
-![Screenshot](https://i.ibb.co/7XT3VqW/t-l-chargement-3.png)
+![demoent](https://i.postimg.cc/gjJ8FWNy/ezgif-3-89a6548a75c9.gif)
 
 ##  📝 Contact
 Mail : _daluna_pro@protonmail.ch_.
