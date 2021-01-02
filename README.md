@@ -15,7 +15,7 @@ pip install -r requirements.txt
 profiler.py -n [NAME] -ln [LAST NAME]
 ```
 
-## 📷 Screenshot
+## 📷 Demo
 ![demoent](https://i.postimg.cc/gjJ8FWNy/ezgif-3-89a6548a75c9.gif)
 
 ##  📝 Contact
