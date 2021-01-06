@@ -31,4 +31,4 @@ def copains_davant(name,pren):
     except IndexError:
         return None
 
-# By Daluna#1313 from Prism Intelligence Group
+# By Lui#6166 from Prism Intelligence Group
