@@ -23,7 +23,7 @@ def adresse_search(name,pren):
             url = "http://apilayer.net/api/validate?access_key=4395fd642c2f1b24f5d9d01e0a1f838a&number=+33{}&country_code=&format=1".format(full_phone)
             r = requests.get(url)
             data = r.json()
-            text = {'Phone':phon_full,'Name':name_full,'Adress':addr_full,'Type_tel':data['line_type'],"Loc_phone":data['country_name']+data['location'],'carrier':data['carrier']}
+            text = {'Phone':phon_full,'Name':name_full,'Adress':addr_full,'Type_tel':data['line_type'],"Loc_phone":data['country_name']+" "+data['location'],'carrier':data['carrier']}
             return text
         else:
             return None
