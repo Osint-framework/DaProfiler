@@ -20,7 +20,7 @@ pip install -r requirements.txt
 ```
 ## 💻 Utilisation
 ```bash
-profiler.py -n [NAME] -ln [LAST NAME]
+profiler.py -n [NAME] -ln [LAST NAME] -l True
 ```
 
 ## 📷 Demo
