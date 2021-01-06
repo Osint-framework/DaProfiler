@@ -27,7 +27,7 @@ profiler.py -n [NAME] -ln [LAST NAME] -l True
 ```
 
 ## 📷 Demo
-![alt text](https://i.ibb.co/BPyQ1jV/t-l-chargement-4.png)
+![alt text](https://i.ibb.co/HttbPYR/t-l-chargement-5.png)
 
 ##  📝 Contact
 Mail : _daluna_pro@protonmail.ch_.
