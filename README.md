@@ -23,6 +23,7 @@ pip install -r requirements.txt
 ## 💻 Utilisation
 ```bash
 profiler.py -n [NAME] -ln [LAST NAME] -l True
+(Target Name) (Target Last Name) (Enable Terminal Logging)
 ```
 
 ## 📷 Demo
