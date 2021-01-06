@@ -1,9 +1,8 @@
-import threading, time, colorama, treelib, random
+import threading, time, colorama, treelib, random, sys
 import argparse
 
 from colorama import Fore, init
 init(convert=True)
-from bs4      import BeautifulSoup
 from treelib  import Node, Tree
 
 from modules  import skype_search
@@ -16,32 +15,67 @@ from modules  import twitter_search
 from modules  import facebook_search
 from modules  import mail_gen
 
+from modules.visual import logging
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-n", "--name", help="Victim name")
+parser.add_argument('-l','--logging',help="Enable terminal logging")
 parser.add_argument('-ln','--lastname',help="Last name of victim")
 args = parser.parse_args()
 
 name = (args.lastname)
 pren = (args.name)
+log = (args.logging)
 
 print("""
- =====================================
-|     Author : Dalunacrobate          |
-|  Mail : daluna_pro@protonmail.ch    |
- =====================================
+      Author : Dalunacrobate
+  Mail : daluna_pro@protonmail.ch
 """)
 
-facebook_results = facebook_search.facebook_search(name=name,pren=pren)
-twitter_results = twitter_search.twitter_search(name=name,pren=pren)
-avis_deces_results = death_records.death_search(name=name,pren=pren)
-bfmtv_results = dirigeants_bfmtv.bfmtv_search(name=name,pren=pren)
-instagram_results = instagram_search.ig_search(name=name,pren=pren)
-copainsdavant_results = copainsdavant_search.copains_davant(name=name,pren=pren)
-skype_results = skype_search.skype_searchh(name=name,pren=pren)
-pagesblanche = pagesblanches_search.adresse_search(name=name,pren=pren)
-possible_mail = mail_gen.check(name=name,pren=pren)
-skype2mail = mail_gen.skype2email(name=name,pren=pren)
+if pren and name is not None:
+    logging.terminal_loggin(log,text="[*] Searching for Facebook accounts ...\n")
+    facebook_results = facebook_search.facebook_search(name=name,pren=pren)
+    sys.stdout.write("\033[F")
+    logging.terminal_loggin(log,text="[*] Searching for Twitter accounts ...\n")
+    twitter_results = twitter_search.twitter_search(name=name,pren=pren)
+    sys.stdout.write("\033[F")
+    logging.terminal_loggin(log,text="[*] Searching for Death records ...\n")
+    avis_deces_results = death_records.death_search(name=name,pren=pren)
+    sys.stdout.write("\033[F")
+    logging.terminal_loggin(log,text="[*] Searching for Company ...\n")
+    bfmtv_results = dirigeants_bfmtv.bfmtv_search(name=name,pren=pren)
+    sys.stdout.write("\033[F")
+    logging.terminal_loggin(log,text="[*] Searching for instagram accounts ...\n")
+    instagram_results = instagram_search.ig_search(name=name,pren=pren)
+    sys.stdout.write("\033[F")
+    logging.terminal_loggin(log,text="[*] Searching for CopainsDavant accounts ...\n")
+    copainsdavant_results = copainsdavant_search.copains_davant(name=name,pren=pren)
+    sys.stdout.write("\033[F")
+    logging.terminal_loggin(log,text="[*] Searching for Skype accounts ...\n")
+    skype_results = skype_search.skype_searchh(name=name,pren=pren)
+    sys.stdout.write("\033[F")
+    logging.terminal_loggin(log,text="[*] Searching for Phones and Adresses ...\n")
+    pagesblanche = pagesblanches_search.adresse_search(name=name,pren=pren)
+    sys.stdout.write("\033[F")
+    logging.terminal_loggin(log,text="[*] Searching for Mail adresses ...\n")
+    possible_mail = mail_gen.check(name=name,pren=pren)
+    sys.stdout.write("\033[F")
+    logging.terminal_loggin(log,text="[*] Searching for Mail from Skype profiles ...\n")
+    skype2mail = mail_gen.skype2email(name=name,pren=pren)
+    sys.stdout.write("\033[F")
+else:
+    facebook_results = None
+    twitter_results = None
+    avis_deces_results = None
+    bfmtv_results = None
+    instagram_results = None
+    copainsdavant_results = None
+    skype_results = None
+    pagesblanche = None
+    possible_mail = None
+    skype2mail = None
+    pren = "No"
+    name = "Value Selected"
 
 tree = Tree()
 tree.create_node(f"{pren} {name}", 1)
@@ -83,20 +117,21 @@ if instagram_results is not None:
     tree.create_node('Accounts : {}'.format(str(len(instagram_results))),13,parent=7)
     for i in instagram_results:
         tree.create_node(i,parent=13)
-if len(possible_mail) != 0 or len(skype2mail) != 0:
-    tree.create_node(Fore.RED+'Emails extracted'+Fore.RESET,146,parent=1)
-    if skype2mail is not None:
-        tree.create_node('['+Fore.GREEN+"++"+Fore.RESET+'] High probability',142,parent=146)
-        no_doubles = []
-        for i in skype2mail:
-            if i not in no_doubles:
-                no_doubles.append(i)
-                tree.create_node(i,parent=142)
-    nb= str((len(possible_mail)))
-    if int(nb) != 0:
-        tree.create_node("("+Fore.YELLOW+nb+Fore.RESET+") "+Fore.YELLOW+"Possible Mailbox"+Fore.RESET,8,parent=146)
-        for i in possible_mail:
-            tree.create_node(i,parent=8)
+if possible_mail is not None:
+    if len(possible_mail) != 0 or len(skype2mail) != 0:
+        tree.create_node(Fore.RED+'Emails extracted'+Fore.RESET,146,parent=1)
+        if skype2mail is not None:
+            tree.create_node('['+Fore.GREEN+"++"+Fore.RESET+'] High probability',142,parent=146)
+            no_doubles = []
+            for i in skype2mail:
+                if i not in no_doubles:
+                    no_doubles.append(i)
+                    tree.create_node(i,parent=142)
+        nb= str((len(possible_mail)))
+        if int(nb) != 0:
+            tree.create_node("("+Fore.YELLOW+nb+Fore.RESET+") "+Fore.YELLOW+"Possible Mailbox"+Fore.RESET,8,parent=146)
+            for i in possible_mail:
+                tree.create_node(i,parent=8)
 if facebook_results is not None:
     nb = str(len(facebook_results))
     tree.create_node(Fore.BLUE+"Facebook"+Fore.RESET,9,parent=1)
