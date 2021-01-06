@@ -10,11 +10,11 @@ def ig_search(name,pren):
 'Accept-Language': 'en-US,en;q=0.9',
 'Pragma': 'no-cache'
 }
-    r = requests.get(url='https://www.mystalk.net/search/{} {}'.format(pren,name),headers=headers)
+    r = requests.get(url='https://instajust.com/search/{} {}'.format(name,pren),headers=headers)
     page = r.content
     features = "html.parser"
     soup = BeautifulSoup(page, features)
-    profiles = soup.find_all('div',{'class':'info'})
+    profiles = soup.find_all('div',{'class':'trending_inst--inst'})
     new_profiles = []
     for i in profiles:
         i = i.text
@@ -23,4 +23,4 @@ def ig_search(name,pren):
             new_profiles.append(profile)
     return new_profiles
 
-# By Daluna#1313 from Prism Intelligence Group
+# By Lui#6166 from Prism Intelligence Group
