@@ -54,4 +54,4 @@ def skype2email(name,pren):
                 valid_emails.append(i)
     return valid_emails
 
-# By Daluna#1313 from Prism Intelligence Group
+# By Lui#6166 from Prism Intelligence Group
