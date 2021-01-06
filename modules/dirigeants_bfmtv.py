@@ -27,4 +27,5 @@ def bfmtv_search(name,pren):
         return text
     except AttributeError:
         return None
-# By Daluna#1313 from Prism Intelligence Group
+
+# By Lui#6166 from Prism Intelligence Group
