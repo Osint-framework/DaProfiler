@@ -1,7 +1,7 @@
 import threading, time, colorama, treelib, random, sys
 import argparse
 
-from colorama import Fore, init
+from colorama import Fore, init, Back
 init(convert=True)
 from treelib  import Node, Tree
 
@@ -14,8 +14,10 @@ from modules  import death_records
 from modules  import twitter_search
 from modules  import facebook_search
 from modules  import mail_gen
+from modules  import emailrep_io
 
-from modules.visual import logging
+from modules.api_modules import leakcheck_net
+from modules.visual      import logging
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-n", "--name", help="Victim name")
@@ -84,6 +86,8 @@ if pagesblanche is not None:
     tree.create_node("Full Name : {}".format(pagesblanche['Name']),22,parent=2)
     tree.create_node("Adress    : {}".format(pagesblanche['Adress']),33,parent=2)
     tree.create_node("Phone     : {}".format(pagesblanche['Phone']),44,parent=2)
+    if pagesblanche['carrier'] is not None:
+        tree.create_node('Carrier : {}'.format(pagesblanche['carrier']),894,parent=44)
     if pagesblanche['Loc_phone'] is not None:
         tree.create_node('Localisation : {}'.format(pagesblanche['Loc_phone']),55,parent=44)
     if pagesblanche['Type_tel'] is not None:
@@ -125,8 +129,34 @@ if possible_mail is not None:
             no_doubles = []
             for i in skype2mail:
                 if i not in no_doubles:
+                    chars = "abcdefghijklmnopqrstuvwxyz1234567890"
+                    number = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
                     no_doubles.append(i)
-                    tree.create_node(i,parent=142)
+                    tree.create_node(i,number,parent=142)
+                    # GET LEAKED PASSWORDS FROM LEAKCHET.NET API -> \api_modules\leakcheck_net.py
+                    a = leakcheck_net.leak_check_api(mail=i)
+                    if a is not None:
+                        chars = "abcdefghijklmnopqrstuvwxyz1234567890"
+                        number_pass = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
+                        tree.create_node(Fore.RED+Back.WHITE+"Leaked Creditentials"+Fore.RESET,number_pass,parent=number)
+                        for i in a:
+                            password  = i['password']
+                            leak_name = i['leak_name']
+                            leak_date = i['leak_date']
+                            tree.create_node('Password  : {}'.format(password),parent=number_pass)
+                            tree.create_node('Leak Name : {}'.format(leak_name),parent=number_pass)
+                            tree.create_node('Leak Date : {}'.format(leak_date),parent=number_pass)
+
+                    # PRINTING EMAILREP.IO DATA FROM FREE PLAN
+                    a = emailrep_io.emailrep(mail=i)
+                    if a is not None:
+                        chars = "abcdefghijklmnopqrstuvwxyz1234567890"
+                        new_number = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
+                        tree.create_node('Emailrep.io',new_number,parent=number)
+                        if a['suspicious'] is not None:
+                            tree.create_node(Fore.RED+"Suspicious activity detected"+Fore.RESET,parent=new_number)
+                        if a['credentials_leaked'] is not None:
+                            tree.create_node(Fore.RED+"Email Breached"+Fore.RESET,parent=new_number)
         nb= str((len(possible_mail)))
         if int(nb) != 0:
             tree.create_node("("+Fore.YELLOW+nb+Fore.RESET+") "+Fore.YELLOW+"Possible Mailbox"+Fore.RESET,8,parent=146)
@@ -139,3 +169,6 @@ if facebook_results is not None:
     for i in facebook_results:
         tree.create_node(i,parent=10)
 tree.show()
+
+
+# By Lui#6166 from Prism Intelligence Group
