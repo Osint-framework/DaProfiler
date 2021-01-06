@@ -21,4 +21,4 @@ def twitter_search(name,pren):
     except:
         return None
 
-# By Daluna#1313 from Prism Intelligence Group
+# By Lui#6166 from Prism Intelligence Group
