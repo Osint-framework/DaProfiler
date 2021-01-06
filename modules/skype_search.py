@@ -30,4 +30,4 @@ def skype_searchh(name,pren):
         profile_dict.append('{} \t| {}'.format(i,full_name,))
     return profile_dict
 
-# By Daluna#1313 from Prism Intelligence Group
+# By Lui#6166 from Prism Intelligence Group
