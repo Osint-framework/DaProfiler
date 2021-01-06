@@ -20,3 +20,5 @@ def facebook_search(name,pren):
 This code cand be found at : 
 https://github.com/lulz3xploit/LittleBrother/blob/master/core/facebookSearchTool.py
 '''
+
+# By Lui#6166 from Prism Intelligence Group
