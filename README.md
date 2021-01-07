@@ -29,6 +29,13 @@ profiler.py -n [NAME] -ln [LAST NAME] -l True
 ## 📷 Demo
 ![alt text](https://i.ibb.co/HttbPYR/t-l-chargement-5.png)
 
+## 🛠 Api
+| Source | Service type | Subscription | Key in code |
+| :---: | :---: | :---: | :---: |
+| emailrep.io | Email Reputation | Free ✅ | No Key |
+| Leakcheck.net | Breach Search | Premium 🔑 | ❌ | 
+| apilayer.net | Phone infos | Free ✅ | ✅ |
+
 ##  📝 Contact
 Mail : _daluna_pro@protonmail.ch_.
 
