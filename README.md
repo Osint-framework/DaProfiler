@@ -4,7 +4,7 @@
 
 
 
-For educational purposes only.
+A but educatif seulement.
 
 ![Alt Text](https://i.ibb.co/58v91qc/download-1.gif)
 
@@ -36,10 +36,13 @@ profiler.py -n [NAME] -ln [LAST NAME] -l True
 | Leakcheck.net | Breach Search | Premium 🔑 | ❌ | 
 | apilayer.net | Phone infos | Free ✅ | ✅ |
 
+Ajouter vos clés d'api premium :
++ Allez dans modules\api_modules et ouvrez le module qui correspond à votre API, remplacez "YOUR_KEY" par votre clé, sauvegardez et quittez votre editeur de texte
+
 ##  📝 Contact
 Mail : _daluna_pro@protonmail.ch_.
 
-Mon discord personnel : _Lui#6166_.
+Mon discord : _Lui#6166_.
 
 ## 📚 Contributions
 Toutes suggestions sont les bienvenues.
