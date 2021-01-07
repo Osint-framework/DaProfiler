@@ -41,7 +41,7 @@ Ajouter vos clés d'api premium :
 ##  📝 Contact
 Mail : _daluna_pro@protonmail.ch_.
 
-Mon discord : _Lui#6166_.
+Mon discord : `Lui#6166`
 
 ## 📚 Contributions
 Toutes suggestions sont les bienvenues.
