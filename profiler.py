@@ -146,17 +146,6 @@ if possible_mail is not None:
                             tree.create_node('Password  : {}'.format(password),parent=number_pass)
                             tree.create_node('Leak Name : {}'.format(leak_name),parent=number_pass)
                             tree.create_node('Leak Date : {}'.format(leak_date),parent=number_pass)
-
-                    # PRINTING EMAILREP.IO DATA FROM FREE PLAN
-                    a = emailrep_io.emailrep(mail=i)
-                    if a is not None:
-                        chars = "abcdefghijklmnopqrstuvwxyz1234567890"
-                        new_number = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
-                        tree.create_node('Emailrep.io',new_number,parent=number)
-                        if a['suspicious'] is not None:
-                            tree.create_node(Fore.RED+"Suspicious activity detected"+Fore.RESET,parent=new_number)
-                        if a['credentials_leaked'] is not None:
-                            tree.create_node(Fore.RED+"Email Breached"+Fore.RESET,parent=new_number)
         nb= str((len(possible_mail)))
         if int(nb) != 0:
             tree.create_node("("+Fore.YELLOW+nb+Fore.RESET+") "+Fore.YELLOW+"Possible Mailbox"+Fore.RESET,8,parent=146)
