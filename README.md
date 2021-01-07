@@ -6,7 +6,7 @@
 
 A but educatif seulement.
 
-![Alt Text](https://i.ibb.co/58v91qc/download-1.gif)
+<p align="center"> <img src="https://i.ibb.co/58v91qc/download-1.gif"></p>
 
 # DaProfiler
 DaProfiler vous permet d'automatiser vos recherches sur des particuliers basés en **__France__** uniquement. Cet outil ne nécessite aucune clé d'API pour le moment mais un module qui se basera sur l'API de [LeakCheck.net](https://leakcheck.net/) ne tardera pas à arriver.
