@@ -37,7 +37,7 @@ profiler.py -n [NAME] -ln [LAST NAME] -l True
 | apilayer.net | Phone infos | Free ✅ | ✅ |
 
 Ajouter vos clés d'api premium :
-+ Allez dans modules\api_modules et ouvrez le module qui correspond à votre API, remplacez "YOUR_KEY" par votre clé, sauvegardez et quittez votre editeur de texte
++ Allez dans [modules\api_modules](https://github.com/dalunacrobate/DaProfiler/tree/main/modules/api_modules) et ouvrez le module qui correspond à votre API, remplacez "YOUR_KEY" par votre clé, sauvegardez et quittez votre editeur de texte
 
 ##  📝 Contact
 Mail : _daluna_pro@protonmail.ch_.
