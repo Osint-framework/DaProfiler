@@ -14,7 +14,7 @@ from modules  import death_records
 from modules  import twitter_search
 from modules  import facebook_search
 from modules  import mail_gen
-from modules  import emailrep_io
+#from modules  import emailrep_io
 
 from modules.api_modules import leakcheck_net
 from modules.visual      import logging
