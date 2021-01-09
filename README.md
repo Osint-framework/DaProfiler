@@ -16,7 +16,7 @@ La particularité de ce programme est sa capacité à retrouver les adresses mai
 Python 3.8 requis
 ```bash
 git clone https://github.com/dalunacrobate/DaProfiler.git
-cd daprofiler-main
+cd DaProfiler
 pip install -r requirements.txt
 ```
 ## 💻 Utilisation
