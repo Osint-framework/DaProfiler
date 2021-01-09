@@ -14,6 +14,8 @@ from modules  import death_records
 from modules  import twitter_search
 from modules  import facebook_search
 from modules  import mail_gen
+from modules  import scylla_sh
+
 #from modules  import emailrep_io
 
 from modules.api_modules import leakcheck_net
@@ -133,6 +135,15 @@ if possible_mail is not None:
                     number = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
                     no_doubles.append(i)
                     tree.create_node(i,number,parent=142)
+                    # GETTING LEAKED PASSWORDS FROM SCYLLA.SH -> \modules\scylla_sh.py
+                    scylla_results = scylla_sh.scylla_search(email=i)
+                    if scylla_results is not None:
+                        tree.create_node(Fore.RED+'Leaked From'+Fore.RESET+' : Scylla.sh',1518451,parent=number)
+                        for i in scylla_results:
+                            chars = "abcdefghijklmnopqrstuvwxyz1234567890"
+                            number = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
+                            tree.create_node('Leak Name : {}'.format(i['Name']),parent=1518451)
+                            tree.create_node('Password  : {}'.format(i['Password']),parent=1518451)
                     # GET LEAKED PASSWORDS FROM LEAKCHET.NET API -> \api_modules\leakcheck_net.py
                     a = leakcheck_net.leak_check_api(mail=i)
                     if a is not None:
