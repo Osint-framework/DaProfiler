@@ -23,13 +23,15 @@ from modules.visual      import logging
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-n", "--name", help="Victim name")
-parser.add_argument('-l','--logging',help="Enable terminal logging")
+parser.add_argument('-l','--logging',help="Enable terminal logging (Optional)")
 parser.add_argument('-ln','--lastname',help="Last name of victim")
+parser.add_argument('-e','--email',help="Email (Optional)")
 args = parser.parse_args()
 
 name = (args.lastname)
 pren = (args.name)
 log = (args.logging)
+email = (args.email)
 
 print("""
       Author : Dalunacrobate
@@ -67,6 +69,19 @@ if pren and name is not None:
     logging.terminal_loggin(log,text="[*] Searching for Mail from Skype profiles ...\n")
     skype2mail = mail_gen.skype2email(name=name,pren=pren)
     sys.stdout.write("\033[F")
+elif len(pren) and len(name) == 0:
+    facebook_results = None
+    twitter_results = None
+    avis_deces_results = None
+    bfmtv_results = None
+    instagram_results = None
+    copainsdavant_results = None
+    skype_results = None
+    pagesblanche = None
+    possible_mail = None
+    skype2mail = None
+    pren = "No name"
+    name = " selected"
 else:
     facebook_results = None
     twitter_results = None
@@ -81,8 +96,23 @@ else:
     pren = "No"
     name = "Value Selected"
 
+if email is not None:
+    email_value = True
+else:
+    email = ""
+    email_value = False
+
 tree = Tree()
-tree.create_node(f"{pren} {name}", 1)
+tree.create_node(f"{pren} {name} {email}", 1)
+if email_value == True:
+    tree.create_node(Fore.CYAN+f"{email}"+Fore.RESET,5618541874,parent=1)
+    logging.terminal_loggin(log,text="[*] Searching for leaked creditentials on target : "+Fore.RED+email+Fore.RESET+"\n")
+    scylla_results = scylla_sh.scylla_search(email=email)
+    if scylla_results is not None:
+        tree.create_node(Fore.BLUE+'Scylla.sh'+Fore.RESET,1841981,parent=5618541874)
+        for i in scylla_results:
+            tree.create_node('Leak Name : {}'.format(i['Name']),parent=1841981)
+            tree.create_node('Password  : {}'.format(i['Password']),parent=1841981)
 if pagesblanche is not None:
     tree.create_node(Fore.YELLOW+"Adress - Phone"+Fore.RESET,2,parent=1)
     tree.create_node("Full Name : {}".format(pagesblanche['Name']),22,parent=2)
@@ -169,6 +199,5 @@ if facebook_results is not None:
     for i in facebook_results:
         tree.create_node(i,parent=10)
 tree.show()
-
 
 # By Lui#6166 from Prism Intelligence Group
