@@ -13,7 +13,7 @@ La particularité de ce programme est sa capacité à retrouver les adresses mai
 
 ## 🛠 Installation - Linux
 
-Python 3.8 required
+Python 3.8 requis
 ```bash
 git clone https://github.com/dalunacrobate/DaProfiler.git
 cd daprofiler-main
