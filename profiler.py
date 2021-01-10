@@ -1,5 +1,9 @@
-import threading, time, colorama, treelib, random, sys
-import argparse
+import threading, time, colorama, treelib, random, sys, os, argparse
+
+if sys.platform == "win32":
+    os.system('cls')
+else:
+    os.system('clear')
 
 from colorama import Fore, init, Back
 init(convert=True)
