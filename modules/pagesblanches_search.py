@@ -18,12 +18,18 @@ def adresse_search(name,pren):
         phon_full = (target_phon.text.strip())
 
         if name.lower() in name_full.lower():
-            prefix = (phon_full[1:])
-            full_phone = (prefix.replace(' ',''))
-            url = "http://apilayer.net/api/validate?access_key=4395fd642c2f1b24f5d9d01e0a1f838a&number=+33{}&country_code=&format=1".format(full_phone)
-            r = requests.get(url)
+            r = requests.get('https://www.infos-numero.com/ajax/NumberInfo?num={}'.format(phon_full))
             data = r.json()
-            text = {'Phone':phon_full,'Name':name_full,'Adress':addr_full,'Type_tel':data['line_type'],"Loc_phone":data['country_name']+" "+data['location'],'carrier':data['carrier']}
+
+            type_tel = (data['info']['type'])
+            if type_tel == "FIXED_LINE":
+                type_tel = "Fixe"
+            carrier = (data['info']['carrier'])
+            if len(carrier) <= 1:
+                carrier = 0
+                carrier = None
+            localisation = (data['info']['ville'])
+            text = {'Phone':phon_full,'Name':name_full,'Adress':addr_full,'Type_tel':type_tel,"Loc_phone":localisation,'carrier':carrier}
             return text
         else:
             return None
