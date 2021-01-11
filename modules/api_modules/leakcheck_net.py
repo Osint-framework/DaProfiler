@@ -1,4 +1,4 @@
-from leakcheck import InvalidParamsException, LeakCheckAPI
+from leakcheck import LeakCheckAPI
 
 def leak_check_api(mail):
     full_results = []
@@ -31,7 +31,7 @@ def leak_check_api(mail):
         if len(full_results) == 0:
             return None
         return full_results
-    except InvalidParamsException:
+    except:
         return None
 
 # By Lui#6166 from Prism Intelligence Group
