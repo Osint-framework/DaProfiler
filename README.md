@@ -61,7 +61,7 @@ Mon discord : `Lui#6166`
 Toutes suggestions sont les bienvenues.
 
 ### 🌒 Autre
-Mon fond d'écran [ici](https://new-game-plus.fr/wp-content/uploads/2020/11/cyberpunk-2077-art.jpg).
+Mon fond d'écran [ici](https://images.hdqwalls.com/wallpapers/rize-kamishiro-tokyo-ghoul-ye.jpg).
 
 ![saythanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)
 
