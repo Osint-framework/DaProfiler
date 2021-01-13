@@ -1,10 +1,5 @@
 import threading, time, colorama, treelib, random, sys, os, argparse
 
-if sys.platform == "win32":
-    os.system('cls')
-else:
-    os.system('clear')
-
 from colorama import Fore, init, Back
 init(convert=True)
 from treelib  import Node, Tree
@@ -25,6 +20,8 @@ from modules  import mail_check
 from modules.api_modules import leakcheck_net
 from modules.visual      import logging
 
+banner = False 
+
 parser = argparse.ArgumentParser()
 parser.add_argument("-n", "--name", help="Victim name")
 parser.add_argument('-l','--logging',help="Enable terminal logging (Optional)")
@@ -37,10 +34,7 @@ pren     = (args.name)
 log      = (args.logging)
 email    = (args.email)
 
-print("""
-      Author : Dalunacrobate
-  Mail : daluna_pro@protonmail.ch
-""")
+print("Author : Dalunacrobate | Mail : "+Fore.CYAN+"daluna_pro@protonmail.ch"+Fore.RESET)
 
 try:
     if pren and name is not None:
@@ -125,14 +119,17 @@ tree.create_node(f"{pren} {name} {email}", 1)
 if email_value == True:
     logging.terminal_loggin(log,text=" - Searching for passwords on target : {}\n".format(email))
     email_pass = scylla_sh.scylla_search(email=email)
-    if len(email_pass) > 0:
-        tree.create_node(Fore.RED+"Target"+Fore.RESET+" : "+email,49849489481858,parent=1)
-        for i in email_pass:
-            chars = "abcdefghijklmnopqrstuvwxyz1234567890"
-            number_sk = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
-            tree.create_node('Scylla.sh',number_sk,parent=49849489481858)
-            tree.create_node('Database : '+i['Name'],parent=number_sk)
-            tree.create_node('Password : '+i['Password'],parent=number_sk)
+    try:
+        if len(email_pass) > 0:
+            tree.create_node(Fore.RED+"Target"+Fore.RESET+" : "+email,49849489481858,parent=1)
+            for i in email_pass:
+                chars = "abcdefghijklmnopqrstuvwxyz1234567890"
+                number_sk = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
+                tree.create_node('Scylla.sh',number_sk,parent=49849489481858)
+                tree.create_node('Database : '+i['Name'],parent=number_sk)
+                tree.create_node('Password : '+i['Password'],parent=number_sk)
+    except TypeError:
+        pass
 if pagesblanche is not None:
     tree.create_node(Fore.YELLOW+"Adress - Phone"+Fore.RESET,2,parent=1)
     tree.create_node("Full Name : {}".format(pagesblanche['Name']),22,parent=2)
