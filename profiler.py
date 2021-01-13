@@ -19,7 +19,7 @@ from modules  import twitter_search
 from modules  import facebook_search
 from modules  import mail_gen
 from modules  import scylla_sh
-
+from modules  import mail_check
 #from modules  import emailrep_io
 
 from modules.api_modules import leakcheck_net
@@ -32,48 +32,75 @@ parser.add_argument('-ln','--lastname',help="Last name of victim")
 parser.add_argument('-e','--email',help="Email (Optional)")
 args = parser.parse_args()
 
-name = (args.lastname)
-pren = (args.name)
-log = (args.logging)
-email = (args.email)
+name     = (args.lastname)
+pren     = (args.name)
+log      = (args.logging)
+email    = (args.email)
 
 print("""
       Author : Dalunacrobate
   Mail : daluna_pro@protonmail.ch
 """)
 
-if pren and name is not None:
-    logging.terminal_loggin(log,text="[*] Searching for Facebook accounts ...\n")
-    facebook_results = facebook_search.facebook_search(name=name,pren=pren)
-    sys.stdout.write("\033[F")
-    logging.terminal_loggin(log,text="[*] Searching for Twitter accounts ...\n")
-    twitter_results = twitter_search.twitter_search(name=name,pren=pren)
-    sys.stdout.write("\033[F")
-    logging.terminal_loggin(log,text="[*] Searching for Death records ...\n")
-    avis_deces_results = death_records.death_search(name=name,pren=pren)
-    sys.stdout.write("\033[F")
-    logging.terminal_loggin(log,text="[*] Searching for Company ...\n")
-    bfmtv_results = dirigeants_bfmtv.bfmtv_search(name=name,pren=pren)
-    sys.stdout.write("\033[F")
-    logging.terminal_loggin(log,text="[*] Searching for instagram accounts ...\n")
-    instagram_results = instagram_search.ig_search(name=name,pren=pren)
-    sys.stdout.write("\033[F")
-    logging.terminal_loggin(log,text="[*] Searching for CopainsDavant accounts ...\n")
-    copainsdavant_results = copainsdavant_search.copains_davant(name=name,pren=pren)
-    sys.stdout.write("\033[F")
-    logging.terminal_loggin(log,text="[*] Searching for Skype accounts ...\n")
-    skype_results = skype_search.skype_searchh(name=name,pren=pren)
-    sys.stdout.write("\033[F")
-    logging.terminal_loggin(log,text="[*] Searching for Phones and Adresses ...\n")
-    pagesblanche = pagesblanches_search.adresse_search(name=name,pren=pren)
-    sys.stdout.write("\033[F")
-    logging.terminal_loggin(log,text="[*] Searching for Mail adresses ...\n")
-    possible_mail = mail_gen.check(name=name,pren=pren)
-    sys.stdout.write("\033[F")
-    logging.terminal_loggin(log,text="[*] Searching for Mail from Skype profiles ...\n")
-    skype2mail = mail_gen.skype2email(name=name,pren=pren)
-    sys.stdout.write("\033[F")
-elif len(pren) and len(name) == 0:
+try:
+    if pren and name is not None:
+        logging.terminal_loggin(log,text=" - Searching for Facebook accounts ...\n")
+        facebook_results = facebook_search.facebook_search(name=name,pren=pren)
+        sys.stdout.write("\033[F")
+        logging.terminal_loggin(log,text=" - Searching for Twitter accounts ...\n")
+        twitter_results = twitter_search.twitter_search(name=name,pren=pren)
+        sys.stdout.write("\033[F")
+        logging.terminal_loggin(log,text=" - Searching for Death records ...\n")
+        avis_deces_results = death_records.death_search(name=name,pren=pren)
+        sys.stdout.write("\033[F")
+        logging.terminal_loggin(log,text=" - Searching for Company ...\n")
+        bfmtv_results = dirigeants_bfmtv.bfmtv_search(name=name,pren=pren)
+        sys.stdout.write("\033[F")
+        logging.terminal_loggin(log,text=" - Searching for instagram accounts ...\n")
+        instagram_results = instagram_search.ig_search(name=name,pren=pren)
+        sys.stdout.write("\033[F")
+        logging.terminal_loggin(log,text=" - Searching for CopainsDavant accounts ...\n")
+        copainsdavant_results = copainsdavant_search.copains_davant(name=name,pren=pren)
+        sys.stdout.write("\033[F")
+        logging.terminal_loggin(log,text=" - Searching for Skype accounts ...\n")
+        skype_results = skype_search.skype_searchh(name=name,pren=pren)
+        sys.stdout.write("\033[F")
+        logging.terminal_loggin(log,text=" - Searching for Phones and Adresses ...\n")
+        pagesblanche = pagesblanches_search.adresse_search(name=name,pren=pren)
+        sys.stdout.write("\033[F")
+        logging.terminal_loggin(log,text=" - Searching for Mail adresses ...\n")
+        possible_mail = mail_gen.check(name=name,pren=pren)
+        sys.stdout.write("\033[F")
+        logging.terminal_loggin(log,text=" - Searching for Mail from Skype profiles ...\n")
+        skype2mail = mail_gen.skype2email(name=name,pren=pren)
+        sys.stdout.write("\033[F")
+    elif len(pren) and len(name) == 0:
+        facebook_results = None
+        twitter_results = None
+        avis_deces_results = None
+        bfmtv_results = None
+        instagram_results = None
+        copainsdavant_results = None
+        skype_results = None
+        pagesblanche = None
+        possible_mail = None
+        skype2mail = None
+        pren = ""
+        name = ""
+    else:
+        facebook_results = None
+        twitter_results = None
+        avis_deces_results = None
+        bfmtv_results = None
+        instagram_results = None
+        copainsdavant_results = None
+        skype_results = None
+        pagesblanche = None
+        possible_mail = None
+        skype2mail = None
+        pren = ""
+        name = ""
+except TypeError:
     facebook_results = None
     twitter_results = None
     avis_deces_results = None
@@ -84,21 +111,8 @@ elif len(pren) and len(name) == 0:
     pagesblanche = None
     possible_mail = None
     skype2mail = None
-    pren = "No name"
-    name = " selected"
-else:
-    facebook_results = None
-    twitter_results = None
-    avis_deces_results = None
-    bfmtv_results = None
-    instagram_results = None
-    copainsdavant_results = None
-    skype_results = None
-    pagesblanche = None
-    possible_mail = None
-    skype2mail = None
-    pren = "No"
-    name = "Value Selected"
+    pren = ""
+    name = ""  
 
 if email is not None:
     email_value = True
@@ -109,14 +123,16 @@ else:
 tree = Tree()
 tree.create_node(f"{pren} {name} {email}", 1)
 if email_value == True:
-    tree.create_node(Fore.CYAN+f"{email}"+Fore.RESET,5618541874,parent=1)
-    logging.terminal_loggin(log,text="[*] Searching for leaked creditentials on target : "+Fore.RED+email+Fore.RESET+"\n")
-    scylla_results = scylla_sh.scylla_search(email=email)
-    if scylla_results is not None:
-        tree.create_node(Fore.BLUE+'Scylla.sh'+Fore.RESET,1841981,parent=5618541874)
-        for i in scylla_results:
-            tree.create_node('Leak Name : {}'.format(i['Name']),parent=1841981)
-            tree.create_node('Password  : {}'.format(i['Password']),parent=1841981)
+    logging.terminal_loggin(log,text=" - Searching for passwords on target : {}\n".format(email))
+    email_pass = scylla_sh.scylla_search(email=email)
+    if len(email_pass) > 0:
+        tree.create_node(Fore.RED+"Target"+Fore.RESET+" : "+email,49849489481858,parent=1)
+        for i in email_pass:
+            chars = "abcdefghijklmnopqrstuvwxyz1234567890"
+            number_sk = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
+            tree.create_node('Scylla.sh',number_sk,parent=49849489481858)
+            tree.create_node('Database : '+i['Name'],parent=number_sk)
+            tree.create_node('Password : '+i['Password'],parent=number_sk)
 if pagesblanche is not None:
     tree.create_node(Fore.YELLOW+"Adress - Phone"+Fore.RESET,2,parent=1)
     tree.create_node("Full Name : {}".format(pagesblanche['Name']),22,parent=2)
@@ -151,7 +167,10 @@ if skype_results is not None:
     tree.create_node(Fore.CYAN+"Skype"+Fore.RESET,6,parent=1)
     tree.create_node("Accounts : {}".format(str(len(skype_results))),12,parent=6)
     for i in skype_results:
-        tree.create_node(i,parent=12)
+        chars = "abcdefghijklmnopqrstuvwxyz1234567890"
+        number_sk = random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)+random.choice(chars)
+        tree.create_node(i,number_sk,parent=12)
+        
 if instagram_results is not None:
     tree.create_node(Fore.MAGENTA+"Instagram"+Fore.RESET,7,parent=1)
     tree.create_node('Accounts : {}'.format(str(len(instagram_results))),13,parent=7)
